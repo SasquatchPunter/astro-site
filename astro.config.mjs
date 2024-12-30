@@ -1,18 +1,11 @@
 // @ts-check
 import { defineConfig } from "astro/config";
-
-import sanity from "@sanity/astro";
 import react from "@astrojs/react";
 
-// https://astro.build/config
 export default defineConfig({
-  integrations: [
-    sanity({
-      projectId: "jyzisse5",
-      dataset: "production",
-      useCdn: false,
-      studioBasePath: "/admin",
-    }),
-    react(),
-  ],
+  output: "static",
+  redirects: {
+    "/admin/[...path]": "/admin",
+  },
+  integrations: [react()],
 });
